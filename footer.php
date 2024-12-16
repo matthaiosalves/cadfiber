@@ -77,7 +77,7 @@
 		</div>
 	</div>
 	<div class="footerGreen">
-		<p>CNPJ: 40.875.623/0001-22 © <?php echo date('y'); ?> cadfiber.com – Todos os Direitos Reservados</p>
+		<p>CNPJ: 40.875.623/0001-22 © 20<?php echo date('y'); ?> cadfiber.com – Todos os Direitos Reservados</p>
 	</div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

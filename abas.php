@@ -65,7 +65,7 @@ Template Name: Abas
 <?php include get_template_directory() . '/templates/cta.php'; ?>
 <?php include get_template_directory() . '/templates/contato.php'; ?>
 <script>
-  const apiUrl = '<?php echo get_site_url(); ?>/wp-json/wp/v2/abas';
+  const apiUrl = '<?php echo get_site_url(); ?>/wp-json/wp/v2/abas?per_page=100';
 
   const boxContent = document.querySelector('.boxContent');
   const abasList = document.getElementById('abas-list');
