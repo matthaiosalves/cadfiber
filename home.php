@@ -120,7 +120,7 @@ get_header();
         <div class="boxBody">
           <img src="<?php echo get_template_directory_uri(); ?>/img/icone-1-cadfiber.svg" alt="" class="icone" width="60">
           <div class="boxContent">
-            <h4><span class="dot"></span>Esforço Mecanico</h4>
+            <h4><span class="dot"></span>Esforço Mecânico</h4>
             <p>Cálculo de esforço mecânico.</p>
           </div>
         </div>

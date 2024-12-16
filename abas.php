@@ -65,24 +65,26 @@ Template Name: Abas
 <?php include get_template_directory() . '/templates/cta.php'; ?>
 <?php include get_template_directory() . '/templates/contato.php'; ?>
 <script>
-  const apiUrl = '<?php echo get_site_url(); ?>/wp-json/wp/v2/abas?per_page=100';
+  const apiUrl = '<?php echo get_site_url(); ?>/wp-json/custom/v1/abas';
 
   const boxContent = document.querySelector('.boxContent');
   const abasList = document.getElementById('abas-list');
 
+  let allAbas = []; // Variável global para armazenar todas as abas carregadas
+
   async function loadAbas() {
     try {
       const response = await fetch(apiUrl);
-      const abas = await response.json();
+      allAbas = await response.json();
 
-      if (abas.length === 0) {
+      if (allAbas.length === 0) {
         boxContent.innerHTML = '<p>Nenhuma aba disponível.</p>';
         return;
       }
 
+      allAbas.forEach((aba, index) => {
+        const label = aba.label_lateral || aba.title;
 
-      abas.forEach((aba, index) => {
-        const label = aba.label_lateral || aba.title.rendered;
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.href = '#';
@@ -91,7 +93,7 @@ Template Name: Abas
 
         if (index === 0) {
           a.classList.add('active');
-          loadContent(aba.id);
+          loadContent(aba.id); // Carrega o conteúdo da primeira aba
         }
 
         li.appendChild(a);
@@ -104,34 +106,32 @@ Template Name: Abas
     }
   }
 
-
   function addClickEvents() {
     const tabs = document.querySelectorAll('.boxAbas ul li a');
 
     tabs.forEach(tab => {
-      tab.addEventListener('click', async (e) => {
+      tab.addEventListener('click', (e) => {
         e.preventDefault();
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         const postId = tab.getAttribute('data-id');
-        loadContent(postId);
+        loadContent(postId); // Carrega o conteúdo da aba selecionada
       });
     });
   }
 
+  function loadContent(postId) {
+    // Busca a aba pelo ID dentro da variável global allAbas
+    const aba = allAbas.find(item => item.id == postId);
 
-  async function loadContent(postId) {
-    try {
-      const response = await fetch(`${apiUrl}/${postId}`);
-      const aba = await response.json();
-
+    if (aba) {
       boxContent.innerHTML = `
-        <h2>${aba.title.rendered}</h2>
-        ${aba.content.rendered}
-      `;
-    } catch (error) {
+      <h2>${aba.title}</h2>
+      <div>${aba.content}</div>
+    `;
+    } else {
       boxContent.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
-      console.error('Erro ao carregar o conteúdo:', error);
+      console.error('Conteúdo não encontrado para o ID:', postId);
     }
   }
 
