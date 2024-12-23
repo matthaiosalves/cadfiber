@@ -15,7 +15,7 @@
   <div class="tarja">
     <div class="container-fluid">
       <div class="row boxDescription">
-        <?php the_title(); ?>
+        <span><?php the_title(); ?></span>
       </div>
     </div>
   </div>

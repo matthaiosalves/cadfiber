@@ -157,3 +157,4 @@ require_once get_template_directory() . '/inc/abasCPT.php';
 require_once get_template_directory() . '/inc/footerCPT.php';
 require_once get_template_directory() . '/inc/youtube.php';
 require_once get_template_directory() . '/inc/materiaisCPT.php';
+require_once get_template_directory() . '/inc/bannerCustom.php';

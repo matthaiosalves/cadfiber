@@ -53,6 +53,7 @@ Template Name: Abas
   /* Submenu visível quando o pai tem a classe 'open' */
   .boxAbas ul li.open>ul {
     display: block;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
   }
 
   /* Setinha ao lado dos itens com subitens */
