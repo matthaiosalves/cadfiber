@@ -49,25 +49,42 @@ function listar_todos_abas($request)
 
 	$query = new WP_Query($args);
 	$posts = array();
+	$subitens_map = []; // Mapeia IDs dos itens pais para seus subitens
 
 	if ($query->have_posts()) {
 		while ($query->have_posts()) {
 			$query->the_post();
 
-			// Busca o valor do campo personalizado "Label Lateral"
+			// Busca os campos personalizados
 			$label_lateral = get_post_meta(get_the_ID(), 'label_lateral', true);
+			$parent_item = get_post_meta(get_the_ID(), 'parent_item', true);
 
+			// Adiciona o post à lista geral
 			$posts[] = array(
 				'id'            => get_the_ID(),
 				'title'         => get_the_title(),
-				'content'       => get_the_content(),
-				'label_lateral' => $label_lateral, // Adiciona o Label Lateral
+				'content'       => apply_filters('the_content', get_the_content()),
+				'label_lateral' => $label_lateral,
+				'parent_item'   => $parent_item, // ID do item pai, se existir
 				'link'          => get_permalink(),
 			);
+
+			// Mapeia o subitem ao item pai
+			if (!empty($parent_item)) {
+				if (!isset($subitens_map[$parent_item])) {
+					$subitens_map[$parent_item] = [];
+				}
+				$subitens_map[$parent_item][] = get_the_ID();
+			}
 		}
 	}
 
 	wp_reset_postdata();
+
+	// Adiciona os subitens ao objeto correspondente
+	foreach ($posts as &$post) {
+		$post['subitens'] = isset($subitens_map[$post['id']]) ? $subitens_map[$post['id']] : [];
+	}
 
 	return new WP_REST_Response($posts, 200);
 }
@@ -75,6 +92,61 @@ function listar_todos_abas($request)
 // Adiciona o endpoint à REST API
 add_action('rest_api_init', 'custom_rest_endpoint_listar_abas');
 
+
+
+
+
+
+
+
+function add_parent_item_metabox()
+{
+	add_meta_box(
+		'parent_item_meta',
+		'Subitem de', // Título da metabox
+		'render_parent_item_metabox',
+		'abas', // Tipo de post personalizado
+		'side', // Localização da metabox
+		'default' // Prioridade da metabox
+	);
+}
+add_action('add_meta_boxes', 'add_parent_item_metabox');
+
+function render_parent_item_metabox($post)
+{
+	// Obtém todos os posts do tipo 'abas' para popular o dropdown
+	$abas = get_posts([
+		'post_type' => 'abas',
+		'posts_per_page' => -1,
+		'post_status' => 'publish',
+		'exclude' => [$post->ID], // Exclui o próprio post
+	]);
+
+	// Obtém o valor atual do meta field
+	$current_parent = get_post_meta($post->ID, 'parent_item', true);
+
+	echo '<label for="parent_item_field">Selecione o item pai:</label>';
+	echo '<select id="parent_item_field" name="parent_item">';
+	echo '<option value="">Nenhum (item principal)</option>';
+
+	foreach ($abas as $aba) {
+		$selected = $current_parent == $aba->ID ? 'selected' : '';
+		echo "<option value='{$aba->ID}' {$selected}>{$aba->post_title}</option>";
+	}
+
+	echo '</select>';
+}
+
+
+function save_parent_item_meta($post_id)
+{
+	// Verifica se o campo foi enviado
+	if (isset($_POST['parent_item'])) {
+		$parent_item = sanitize_text_field($_POST['parent_item']);
+		update_post_meta($post_id, 'parent_item', $parent_item);
+	}
+}
+add_action('save_post', 'save_parent_item_meta');
 
 
 
