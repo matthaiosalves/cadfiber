@@ -104,15 +104,20 @@ Template Name: Abas
       <div class="boxTitles">
         <?php
         $custom_description = get_post_meta(get_the_ID(), '_custom_page_description', true);
-        if ($custom_description) :
+        if ($custom_description) {
+          echo wp_kses_post($custom_description);
+        } else {
         ?>
-          <?php echo $custom_description; ?>
-        <?php endif; ?>
+          <h3>Titulo</h3>
+          <p><span>Titulo</span> ferramentas <br> disponíveis <span>para os</span> projetistas.</p>
+        <?php
+        }
+        ?>
       </div>
 
-      <div class="boxDescription">
+      <!-- <div class="boxDescription">
         <p>Lorem ipsum</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -144,6 +149,7 @@ Template Name: Abas
 
   let allAbas = [];
 
+  // Função principal para carregar as abas
   async function loadAbas() {
     try {
       const response = await fetch(apiUrl);
@@ -168,6 +174,7 @@ Template Name: Abas
     }
   }
 
+  // Criação dos itens de aba (principal e subitens)
   function createTabItem(aba, isActive) {
     const li = document.createElement('li');
 
@@ -181,6 +188,7 @@ Template Name: Abas
     a.setAttribute('data-id', aba.id);
     a.textContent = aba.label_lateral || aba.title;
 
+    // Marca a primeira aba como ativa no carregamento inicial
     if (isActive) {
       a.classList.add('active');
       loadContent(aba.id);
@@ -204,6 +212,7 @@ Template Name: Abas
     return li;
   }
 
+  // Adiciona eventos de clique para alternar abas
   function addClickEvents() {
     const tabs = document.querySelectorAll('.boxAbas ul li > a');
 
@@ -211,35 +220,43 @@ Template Name: Abas
       tab.addEventListener('click', (e) => {
         e.preventDefault();
 
+        // Remove a classe 'active' de todas as abas
+        tabs.forEach(t => t.classList.remove('active'));
+
+        // Adiciona a classe 'active' apenas na aba clicada
+        tab.classList.add('active');
+
         // Alterna o menu se o item tiver subitens
         const parentLi = tab.parentElement;
         if (parentLi.classList.contains('has-sub')) {
           parentLi.classList.toggle('open');
         }
 
-        // Carrega o conteúdo da aba, se aplicável
+        // Carrega o conteúdo da aba
         const postId = tab.getAttribute('data-id');
         loadContent(postId);
       });
     });
   }
 
+  // Carrega o conteúdo da aba selecionada
   function loadContent(postId) {
-    // Busca o conteúdo do item selecionado
     const aba = allAbas.find(item => item.id == postId);
 
     if (aba) {
       boxContent.innerHTML = `
-      <h2>${aba.title}</h2>
-      <div>${aba.content}</div>
-    `;
+        <h2>${aba.title}</h2>
+        <div>${aba.content}</div>
+      `;
     } else {
       boxContent.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
       console.error('Conteúdo não encontrado para o ID:', postId);
     }
   }
 
+  // Inicia o carregamento das abas
   loadAbas();
 </script>
+
 
 <?php get_footer(); ?>

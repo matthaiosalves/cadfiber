@@ -1,6 +1,6 @@
 <section class="barrerAzul">
   <?php if (is_front_page()): ?>
-    <section class="formulario">
+    <section class="formulario" style="display: none;">
       <div class="container-fluid">
         <div class="row">
 
