@@ -89,7 +89,7 @@ Template Name: Abas
     </div>
   </div>
   <div class="boxImagem">
-    <img src="<?php echo get_template_directory_uri(); ?>/img/imagem-projeto-sem mascara.png" alt="" class="imagem">
+    <img src="<?php echo get_custom_banner_url(); ?>" alt="" class="imagem">
   </div>
   <div class="line">
     <img src="<?php echo get_template_directory_uri(); ?>/img/line-internas.svg" alt="" class="">

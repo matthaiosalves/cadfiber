@@ -1303,6 +1303,9 @@ body {
   }
 }
 @media (max-width: 992px) {
+  .navbar .navbar-brand {
+    background-color: transparent !important;
+  }
   .otimize .boxTarja {
     margin: 0 auto;
   }

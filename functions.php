@@ -148,7 +148,9 @@ function save_parent_item_meta($post_id)
 }
 add_action('save_post', 'save_parent_item_meta');
 
+add_filter('show_admin_bar', '__return_false');
 
+add_theme_support('post-thumbnails', ['post', 'page']);
 
 require_once get_template_directory() . '/inc/faqCPT.php';
 require_once get_template_directory() . '/inc/ferramentasCPT.php';
@@ -157,4 +159,5 @@ require_once get_template_directory() . '/inc/abasCPT.php';
 require_once get_template_directory() . '/inc/footerCPT.php';
 require_once get_template_directory() . '/inc/youtube.php';
 require_once get_template_directory() . '/inc/materiaisCPT.php';
-require_once get_template_directory() . '/inc/bannerCustom.php';
+require_once get_template_directory() . '/inc/fnBanner.php';
+require_once get_template_directory() . '/inc/fnCampoDescricao.php';
