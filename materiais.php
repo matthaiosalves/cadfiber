@@ -12,7 +12,7 @@
   <div class="tarja">
     <div class="container-fluid">
       <div class="row boxDescription">
-        <?php the_title(); ?>
+        <span><?php the_title(); ?></span>
       </div>
     </div>
   </div>
@@ -44,33 +44,33 @@
   <div class="container-fluid">
     <div class="row">
 
-    <div class="card cardBlue col-sm-12 col-md-6 col-lg-3">
-  <div class="icon">
-    <?php
-    // Recuperar o ícone Font Awesome
-    $icone_fontawesome = get_post_meta(get_the_ID(), '_icone_fontawesome', true);
-    if ($icone_fontawesome) {
-      echo '<i class="' . esc_attr($icone_fontawesome) . '"></i>';
-    } else {
-      echo '<img src="' . get_template_directory_uri() . '/img/add-document-icon.svg" alt="Ícone">';
-    }
-    ?>
-  </div>
-  <div class="content">
-    <h4><?php the_title(); ?></h4>
-    <div class="row justify-content-end mt-3">
-      <?php
-      // Recuperar o link de download
-      $link_download = get_post_meta(get_the_ID(), '_link_download', true);
-      if ($link_download) {
-        echo '<a href="' . esc_url($link_download) . '" class="btn btn-download" target="_blank">Download ></a>';
-      } else {
-        echo '<p>Link não disponível</p>';
-      }
-      ?>
-    </div>
-  </div>
-</div>
+      <div class="card cardBlue col-sm-12 col-md-6 col-lg-3">
+        <div class="icon">
+          <?php
+          // Recuperar o ícone Font Awesome
+          $icone_fontawesome = get_post_meta(get_the_ID(), '_icone_fontawesome', true);
+          if ($icone_fontawesome) {
+            echo '<i class="' . esc_attr($icone_fontawesome) . '"></i>';
+          } else {
+            echo '<img src="' . get_template_directory_uri() . '/img/add-document-icon.svg" alt="Ícone">';
+          }
+          ?>
+        </div>
+        <div class="content">
+          <h4><?php the_title(); ?></h4>
+          <div class="row justify-content-end mt-3">
+            <?php
+            // Recuperar o link de download
+            $link_download = get_post_meta(get_the_ID(), '_link_download', true);
+            if ($link_download) {
+              echo '<a href="' . esc_url($link_download) . '" class="btn btn-download" target="_blank">Download ></a>';
+            } else {
+              echo '<p>Link não disponível</p>';
+            }
+            ?>
+          </div>
+        </div>
+      </div>
 
 
     </div>
