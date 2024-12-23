@@ -102,8 +102,12 @@ Template Name: Abas
   <div class="container-fluid">
     <div class="row">
       <div class="boxTitles">
-        <h3>Titulo</h3>
-        <p><span>Titulo</span> ferramentas <br> disponíveis <span>para os</span> projetistas.</p>
+        <?php
+        $custom_description = get_post_meta(get_the_ID(), '_custom_page_description', true);
+        if ($custom_description) :
+        ?>
+          <?php echo $custom_description; ?>
+        <?php endif; ?>
       </div>
 
       <div class="boxDescription">
