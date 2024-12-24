@@ -17,14 +17,14 @@
     </div>
   </div>
   <div class="boxImagem">
-    <img src="<?php echo get_custom_banner_url(); ?>" alt="" class="imagem">
+    <img loading="lazy" src="<?php echo get_custom_banner_url(); ?>" alt="" class="imagem">
   </div>
   <div class="line">
-    <img src="<?php echo get_template_directory_uri(); ?>/img/line-internas.svg" alt="" class="">
+    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/line-internas.svg" alt="" class="">
   </div>
 </section>
 <div class="boxTreco">
-  <img src="<?php echo get_template_directory_uri(); ?>/img/treco-verde-internas.svg" alt="">
+  <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/treco-verde-internas.svg" alt="">
 </div>
 <section class="oportunidades" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/img/Bg-2_Cadfiber.png');">
   <div class="container-fluid">
@@ -52,7 +52,7 @@
           if ($icone_fontawesome) {
             echo '<i class="' . esc_attr($icone_fontawesome) . '"></i>';
           } else {
-            echo '<img src="' . get_template_directory_uri() . '/img/add-document-icon.svg" alt="Ícone">';
+            echo '<img loading="lazy" src="' . get_template_directory_uri() . '/img/add-document-icon.svg" alt="Ícone">';
           }
           ?>
         </div>
@@ -77,7 +77,7 @@
   </div>
 </section>
 <div class="boxTreco">
-  <img src="<?php echo get_template_directory_uri(); ?>/img/treco-verde-internas.svg" alt="">
+  <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/treco-verde-internas.svg" alt="">
 </div>
 <?php include get_template_directory() . '/templates/cta.php'; ?>
 <?php include get_template_directory() . '/templates/contato.php'; ?>

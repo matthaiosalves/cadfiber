@@ -5,16 +5,17 @@
   "author": "Seu Nome",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "cssnano": "^7.0.6",
-    "dir-archiver": "^1.1.1",
     "purgecss": "^5.0.0",
-    "purgecss-with-wordpress": "^5.0.0"
+    "purgecss-with-wordpress": "^5.0.0",
+    "dir-archiver": "^1.1.1",
+    "cssnano": "^6.0.0"
   },
   "scripts": {
     "version": "node updateVersion.js",
     "merge:css": "node mergeCSS.js",
+    "lazy:img": "node lazyImages.js",
     "purge": "purgecss --config purgecss.config.js",
     "bundle": "dir-archiver --src . --dest ../cadfiber-bundle.zip --exclude .git node_modules .vscode .DS_Store",
-    "build": "npm run version && npm run merge:css && npm run purge && npm run bundle"
+    "build": "npm run version && npm run merge:css && npm run lazy:img && npm run purge && npm run bundle"
   }
 }

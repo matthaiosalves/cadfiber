@@ -32,7 +32,7 @@ get_header();
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-6 boxImagemBanner">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber.png" alt="" class="imgNote">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber.png" alt="" class="imgNote">
       </div>
 
     </div>
@@ -62,7 +62,7 @@ get_header();
       <!-- Projetos de FTTx -->
       <div class="card cardBlue col-sm-12 col-md-6 col-lg-3">
         <div class="icon">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-fttx.svg" alt="Ícone Projetos de FTTx">
+          <img loading="lazy" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-fttx.svg" alt="Ícone Projetos de FTTx">
         </div>
         <div class="content">
           <h4>Projetos de FTTx</h4>
@@ -72,7 +72,7 @@ get_header();
       <!-- Compartilhamento de Postes -->
       <div class="card cardBlue col-sm-12 col-md-6 col-lg-3">
         <div class="icon">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-postes.svg" alt="Ícone Compartilhamento de Postes">
+          <img loading="lazy" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-postes.svg" alt="Ícone Compartilhamento de Postes">
         </div>
         <div class="content">
           <h4>Compartilha-mento de Postes</h4>
@@ -82,7 +82,7 @@ get_header();
       <!-- Projetos de câmeras -->
       <div class="card cardBlue col-sm-12 col-md-6 col-lg-3">
         <div class="icon">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-cameras.svg" alt="Ícone Projetos de câmeras">
+          <img loading="lazy" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-cameras.svg" alt="Ícone Projetos de câmeras">
         </div>
         <div class="content">
           <h4>Projetos de câmeras</h4>
@@ -92,7 +92,7 @@ get_header();
       <!-- Projetos Subterrâneos -->
       <div class="card cardBlue col-sm-12 col-md-6 col-lg-3">
         <div class="icon">
-          <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-subterraneos.svg" alt="Ícone Projetos Subterrâneos">
+          <img loading="lazy" src="<?php echo get_stylesheet_directory_uri(); ?>/img/icone-subterraneos.svg" alt="Ícone Projetos Subterrâneos">
         </div>
         <div class="content">
           <h4>Projetos Subterrâneos</h4>
@@ -118,7 +118,7 @@ get_header();
     <div class="row mb-4">
       <a href="<?php echo get_site_url(); ?>/ferramentas/esforco-mecanico/" class="boxAzul">
         <div class="boxBody">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/icone-1-cadfiber.svg" alt="" class="icone" width="60">
+          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-1-cadfiber.svg" alt="" class="icone" width="60">
           <div class="boxContent">
             <h4><span class="dot"></span>Esforço Mecânico</h4>
             <p>Cálculo de esforço mecânico.</p>
@@ -128,7 +128,7 @@ get_header();
 
       <a href="<?php echo get_site_url(); ?>/ferramentas/importar-postes/" class="boxAzul">
         <div class="boxBody">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/icone-4-cadfiber.svg" alt="" class="icone" width="60">
+          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-4-cadfiber.svg" alt="" class="icone" width="60">
           <div class="boxContent">
             <h4><span class="dot"></span>Importar postes</h4>
             <p>Inserir postes no projeto.</p>
@@ -138,7 +138,7 @@ get_header();
 
       <a href="<?php echo get_site_url(); ?>/ferramentas/alinhar-postes/" class="boxAzul">
         <div class="boxBody">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/icone-2-cadfiber.svg" alt="" class="icone" width="50">
+          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-2-cadfiber.svg" alt="" class="icone" width="50">
           <div class="boxContent">
             <h4><span class="dot"></span>Alinhar postes</h4>
             <p>Alinhar os postes na quadra.</p>
@@ -148,7 +148,7 @@ get_header();
 
       <a href="<?php echo get_site_url(); ?>/ferramentas/dados-tf/ " class="boxAzul">
         <div class="boxBody">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/icone-5-cadfiber.svg" alt="" class="icone" width="35">
+          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-5-cadfiber.svg" alt="" class="icone" width="35">
           <div class="boxContent">
             <h4><span class="dot"></span>Dados - TF</h4>
             <p>Metragem do cabo.</p>
@@ -158,7 +158,7 @@ get_header();
 
       <a href="<?php echo get_site_url(); ?>/ferramentas/quantitativo/ " class="boxAzul">
         <div class="boxBody">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/icone-3-cadfiber.svg" alt="" class="icone" width="50">
+          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-3-cadfiber.svg" alt="" class="icone" width="50">
           <div class="boxContent">
             <h4><span class="dot"></span>Quantitativo</h4>
             <p>Quantitativo de materiais.</p>
@@ -168,7 +168,7 @@ get_header();
 
       <a href="<?php echo get_site_url(); ?>/ferramentas/mub/" class="boxAzul">
         <div class="boxBody">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/icone-6-cadfiber.svg" alt="" class="icone" width="50">
+          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-6-cadfiber.svg" alt="" class="icone" width="50">
           <div class="boxContent">
             <h4><span class="dot"></span>Mub</h4>
             <p>Ferramenta para desenhar ruas.</p>
@@ -202,7 +202,7 @@ get_header();
               <p class="number">+ 2,500</p>
               <p class="title">Alunos</p>
             </div>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/Icon-otimize-1.svg" alt="" width="50">
+            <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/Icon-otimize-1.svg" alt="" width="50">
           </div>
 
           <div class="boxContent">
@@ -210,13 +210,13 @@ get_header();
               <p class="number">+ 10,000</p>
               <p class="title">KM Projetos</p>
             </div>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/Icon-otimize-2.svg" alt="" width="50">
+            <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/Icon-otimize-2.svg" alt="" width="50">
           </div>
         </div>
       </div>
 
       <div class="col-lg-5 boxImage">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/impressora.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/impressora.png" alt="" class="img-fluid">
       </div>
 
     </div>
@@ -277,22 +277,22 @@ get_header();
   <div class="container-fluid">
     <div class="row">
       <div class="boxImg">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/logo-TMB-ENGENHARIA.jpeg" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logo-TMB-ENGENHARIA.jpeg" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/logomarca-planalto-engenharia.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logomarca-planalto-engenharia.png" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/NOVA-LOGO-PNG-SITE-GOOGLE-1536x803-1.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/NOVA-LOGO-PNG-SITE-GOOGLE-1536x803-1.png" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/Meire-isp-2-2048x1293.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/Meire-isp-2-2048x1293.png" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/cadfiber111.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/cadfiber111.png" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/logomarca-newmaster.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logomarca-newmaster.png" alt="" class="img-fluid">
       </div>
     </div>
   </div>

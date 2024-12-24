@@ -16,7 +16,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="boxLogo">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/logo-branca.svg" alt="">
+					<img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logo-branca.svg" alt="">
 				</div>
 			</div>
 			<div class="row">
@@ -36,7 +36,7 @@
 									$url = get_post_meta(get_the_ID(), '_links_uteis_url', true);
 							?>
 									<a href="<?php echo esc_url($url); ?>" target="_blank">
-										<img src="<?php echo get_template_directory_uri(); ?>/img/seta.svg" alt="">
+										<img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/seta.svg" alt="">
 										<?php the_title(); ?>
 									</a>
 							<?php

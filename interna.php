@@ -11,14 +11,14 @@
     </div>
   </div>
   <div class="boxImagem">
-    <img src="<?php echo get_custom_banner_url(); ?>" alt="" class="imagem">
+    <img loading="lazy" src="<?php echo get_custom_banner_url(); ?>" alt="" class="imagem">
   </div>
   <div class="line">
-    <img src="<?php echo get_template_directory_uri(); ?>/img/line-internas.svg" alt="" class="">
+    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/line-internas.svg" alt="" class="">
   </div>
 </section>
 <div class="boxTreco">
-  <img src="<?php echo get_template_directory_uri(); ?>/img/treco-verde-internas.svg" alt="">
+  <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/treco-verde-internas.svg" alt="">
 </div>
 <section class="oportunidades">
   <div class="container-fluid">
