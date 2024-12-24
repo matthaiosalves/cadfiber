@@ -1,0 +1,61 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Diretórios de build e cache
+dist/
+.cache/
+.next/
+out/
+build/
+*.log
+*.gz
+
+# Arquivos de dependência do Node.js
+package-lock.json
+yarn.lock
+
+# Pastas específicas do WordPress
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/debug.log
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/db.php
+
+# Arquivos de configuração do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Configurações do ambiente
+.env
+.env.local
+.env.*.local
+.idea/
+
+# Arquivos do Visual Studio Code
+.vscode/
+
+# Logs
+*.log
+
+# Arquivos do Composer (se usar PHP com Composer)
+composer.phar
+vendor/
+
+# Diretórios de build do tema
+*.zip
+cadfiber-bundle.zip
+
+# Outros
+*.bak
+*.swp
+.sass-cache/
+*.tmp
+*.bak
+*.swp
+
+# Configurações específicas do projeto
+config.php
