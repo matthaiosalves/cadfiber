@@ -1258,6 +1258,13 @@ body {
   color: #14dfa0;
   font-size: 14px;
 }
+
+.logoDesktop {
+  display: block;
+}
+.logoMobile {
+  display: none;
+}
 @media (min-width: 2000px) {
   .banner .container-fluid {
     left: 110px;
@@ -1303,6 +1310,12 @@ body {
   }
 }
 @media (max-width: 992px) {
+  .logoDesktop {
+    display: none;
+  }
+  .logoMobile {
+    display: block;
+  }
   .navbar .navbar-brand {
     background-color: transparent !important;
   }

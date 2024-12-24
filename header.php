@@ -82,7 +82,8 @@
 		<nav class="navbar navbar-expand-lg fixed-top <?php echo is_front_page() ? 'bg-blue' : 'bg-light'; ?>">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="<?php echo get_site_url(); ?>">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/<?php echo is_front_page() ? 'logo-reduzido.svg' : 'logo-completo.svg'; ?>" alt="">
+					<img class="logoDesktop" src="<?php echo get_template_directory_uri(); ?>/img/<?php echo is_front_page() ? 'logo-reduzido.svg' : 'logo-completo.svg'; ?>" alt="">
+					<img class="logoMobile" src="<?php echo get_template_directory_uri(); ?>/img/logo-reduzido.svg" alt="">
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
