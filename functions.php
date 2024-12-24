@@ -16,11 +16,12 @@ if (! defined('_S_VERSION')) {
 function cadfiber_scripts()
 {
 	$timestamp = filemtime(get_stylesheet_directory() . '/style.min.css');
-	wp_enqueue_style('cadfiber-style', get_stylesheet_uri(), array(), $timestamp);
+	wp_enqueue_style('cadfiber-style', get_stylesheet_directory_uri() . '/style.min.css', array(), $timestamp);
 
 	wp_style_add_data('cadfiber-style', 'rtl', 'replace');
 }
 add_action('wp_enqueue_scripts', 'cadfiber_scripts');
+
 
 if (! function_exists('get_youtube_id')) :
 	function get_youtube_id($url)
