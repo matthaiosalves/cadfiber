@@ -15,7 +15,7 @@ if (! defined('_S_VERSION')) {
 
 function cadfiber_scripts()
 {
-	$timestamp = filemtime(get_stylesheet_directory() . '/style.css');
+	$timestamp = filemtime(get_stylesheet_directory() . '/style.min.css');
 	wp_enqueue_style('cadfiber-style', get_stylesheet_uri(), array(), $timestamp);
 
 	wp_style_add_data('cadfiber-style', 'rtl', 'replace');
