@@ -5,17 +5,22 @@
   "author": "Seu Nome",
   "license": "GPL-2.0-or-later",
   "devDependencies": {
-    "purgecss": "^5.0.0",
-    "purgecss-with-wordpress": "^5.0.0",
+    "cssnano": "^6.0.0",
     "dir-archiver": "^1.1.1",
-    "cssnano": "^6.0.0"
+    "glob": "^7.2.3",
+    "imagemin": "^9.0.0",
+    "imagemin-webp": "^8.0.0",
+    "purgecss": "^5.0.0",
+    "purgecss-with-wordpress": "^5.0.0"
   },
   "scripts": {
+    "convert:webp": "node convertToWebp.js",
     "version": "node updateVersion.js",
     "merge:css": "node mergeCSS.js",
     "lazy:img": "node lazyImages.js",
     "purge": "purgecss --config purgecss.config.js",
     "bundle": "dir-archiver --src . --dest ../cadfiber-bundle.zip --exclude .git node_modules .vscode .DS_Store",
-    "build": "npm run version && npm run merge:css && npm run lazy:img && npm run purge && npm run bundle"
+    "optimize:img": "npm run convert:webp && npm run lazy:img",
+    "build": "npm run version && npm run merge:css && npm run optimize:img && npm run purge && npm run bundle"
   }
 }

@@ -17,7 +17,7 @@ get_header();
     }
   }
 </style>
-<section class="bannerPrincipal" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/img/Bg-1_Cadfiber.png');">
+<section class="bannerPrincipal" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/img/Bg-1_Cadfiber.webp');">
   <div class="container-fluid">
     <div class="row">
 
@@ -32,7 +32,7 @@ get_header();
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-6 boxImagemBanner">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber.png" alt="" class="imgNote">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber.webp" alt="" class="imgNote">
       </div>
 
     </div>
@@ -45,7 +45,7 @@ get_header();
     </div>
   </div>
 </section>
-<section class="oportunidades" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/img/Bg-2_Cadfiber.png');">
+<section class="oportunidades" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/img/Bg-2_Cadfiber.webp');">
   <div class="container-fluid">
     <div class="row">
       <div class="boxTitles">
@@ -216,7 +216,7 @@ get_header();
       </div>
 
       <div class="col-lg-5 boxImage">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/impressora.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/impressora.webp" alt="" class="img-fluid">
       </div>
 
     </div>
@@ -277,22 +277,22 @@ get_header();
   <div class="container-fluid">
     <div class="row">
       <div class="boxImg">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logo-TMB-ENGENHARIA.jpeg" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logo-TMB-ENGENHARIA.webp" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logomarca-planalto-engenharia.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logomarca-planalto-engenharia.webp" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/NOVA-LOGO-PNG-SITE-GOOGLE-1536x803-1.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/NOVA-LOGO-PNG-SITE-GOOGLE-1536x803-1.webp" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/Meire-isp-2-2048x1293.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/Meire-isp-2-2048x1293.webp" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/cadfiber111.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/cadfiber111.webp" alt="" class="img-fluid">
       </div>
       <div class="boxImg">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logomarca-newmaster.png" alt="" class="img-fluid">
+        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/logomarca-newmaster.webp" alt="" class="img-fluid">
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<section class="ctaWhats" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/img/Bg-3_Cadfiber.png');" id="contato">
+<section class="ctaWhats" style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/img/Bg-3_Cadfiber.webp');" id="contato">
   <div class="container-fluid">
     <div class="row">
       <div class="boxMensagem col-sm-12 col-md-6 col-lg-6">
