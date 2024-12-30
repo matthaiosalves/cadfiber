@@ -27,13 +27,22 @@
   <div class="container-fluid">
     <div class="row">
       <div class="boxTitles">
-        <h3>Confira</h3>
-        <p><span>Todas</span> ferramentas <br> disponíveis <span>para os</span> projetistas.</p>
+        <?php
+        $custom_description = get_post_meta(get_the_ID(), '_custom_page_description', true);
+        if ($custom_description) {
+          echo wp_kses_post($custom_description);
+        } else {
+        ?>
+          <h3>Confira</h3>
+          <p><span>Todas</span> ferramentas <br> disponíveis <span>para os</span> projetistas.</p>
+        <?php
+        }
+        ?>
       </div>
 
-      <div class="boxDescription">
+      <!-- <div class="boxDescription">
         <p>Temos uma lista de novas para lançar em breve.</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

@@ -33,13 +33,22 @@
   <div class="container-fluid">
     <div class="row">
       <div class="boxTitles">
-        <h3>CadFiber</h3>
-        <p><span>Os melhores</span> produtos <br> para projetistas.</p>
+        <?php
+        $custom_description = get_post_meta(get_the_ID(), '_custom_page_description', true);
+        if ($custom_description) {
+          echo wp_kses_post($custom_description);
+        } else {
+        ?>
+          <h3>CadFiber</h3>
+          <p><span>Os melhores</span> produtos <br> para projetistas.</p>
+        <?php
+        }
+        ?>
       </div>
 
-      <div class="boxDescription">
+      <!-- <div class="boxDescription">
         <p>Confira e torne-se um afiliado.</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

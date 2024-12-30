@@ -24,13 +24,22 @@
   <div class="container-fluid">
     <div class="row">
       <div class="boxTitles">
-        <h3>Oportunidades</h3>
-        <p><span>para qualquer</span> tipo de <br>projeto de fibra <br> óptica</p>
+        <?php
+        $custom_description = get_post_meta(get_the_ID(), '_custom_page_description', true);
+        if ($custom_description) {
+          echo wp_kses_post($custom_description);
+        } else {
+        ?>
+          <h3>Oportunidades</h3>
+          <p><span>para qualquer</span> tipo de <br>projeto de fibra <br> óptica</p>
+        <?php
+        }
+        ?>
       </div>
 
-      <div class="boxDescription">
+      <!-- <div class="boxDescription">
         <p>Para todos os tamanhos</p>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
