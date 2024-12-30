@@ -276,7 +276,6 @@ get_header();
     </div>
 
     <div class="row boxPricesList">
-
       <?php
       $args = array(
         'post_type' => 'investimentos',
@@ -289,9 +288,9 @@ get_header();
         while ($query->have_posts()): $query->the_post();
 
           $titulo = get_the_title();
-          $descricao = get_the_content();
-          $detalhes = get_post_meta(get_the_ID(), 'detalhes', true);
-          $preco = get_post_meta(get_the_ID(), 'preco', true);
+          $descricao = apply_filters('the_content', get_the_content());
+          $detalhes = get_post_meta(get_the_ID(), '_investimentos_lista', true);
+          $preco = get_post_meta(get_the_ID(), '_investimentos_preco', true);
           $url = get_field('url');
           $detalhes_array = $detalhes ? explode(',', $detalhes) : [];
       ?>
@@ -304,11 +303,11 @@ get_header();
 
                 <div class="hover">
                   <div class="boxPrice">
-                    R$ <span class="price"><?php echo esc_html($preco); ?></span><span class="mounth">Mês</span>
+                    R$ <span class="price"><?php echo esc_html($preco ? $preco : 'N/A'); ?></span><span class="mounth">Mês</span>
                   </div>
 
                   <div class="boxDescription">
-                    <p class="description"><?php echo esc_html($descricao); ?></p>
+                    <p class="description"><?php echo wp_kses_post($descricao); ?></p>
                     <p class="list">
                       <?php
                       if (!empty($detalhes_array)) {
@@ -334,11 +333,8 @@ get_header();
         wp_reset_postdata();
       endif;
       ?>
-
-
-
-
     </div>
+
 
 
   </div>

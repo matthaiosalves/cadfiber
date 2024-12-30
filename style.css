@@ -1347,6 +1347,7 @@ body {
   .bannerPrincipal .boxDescription,
   .bannerPrincipal .boxButtonConvite {
     text-align: center;
+    margin-top: 80px;
   }
   .bannerPrincipal .boxImagemBanner {
     margin-top: 40px;
