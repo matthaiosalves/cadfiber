@@ -26,8 +26,11 @@ get_header();
           <span>Transforme</span> o <br> modo de elaborar <br> projetos <span>FTTx</span> no <br><span>AutoCAD</span>
         </div>
 
+        <?php
+        $url_convite = get_field('url_convite');
+        ?>
         <div class="boxButtonConvite">
-          <a href="#" class="btn btnConvite">Convite > </a>
+          <a href="<?php echo esc_url($url_convite ? $url_convite : '#'); ?>" class="btn btnConvite">Convite ></a>
         </div>
       </div>
 
