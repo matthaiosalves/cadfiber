@@ -307,7 +307,7 @@ get_header();
                   </div>
 
                   <div class="boxDescription">
-                    <p class="description"><?php echo wp_kses_post($descricao); ?></p>
+                    <p class="description"><?php echo esc_html(strip_tags($descricao)); ?></p>
                     <p class="list">
                       <?php
                       if (!empty($detalhes_array)) {
