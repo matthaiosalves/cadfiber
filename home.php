@@ -116,65 +116,34 @@ get_header();
     </div>
 
     <div class="row mb-4">
-      <a href="<?php echo get_site_url(); ?>/ferramentas/esforco-mecanico/" class="boxAzul">
-        <div class="boxBody">
-          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-1-cadfiber.svg" alt="" class="icone" width="60">
-          <div class="boxContent">
-            <h4><span class="dot"></span>Esforço Mecânico</h4>
-            <p>Cálculo de esforço mecânico.</p>
-          </div>
-        </div>
-      </a>
 
-      <a href="<?php echo get_site_url(); ?>/ferramentas/importar-postes/" class="boxAzul">
-        <div class="boxBody">
-          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-4-cadfiber.svg" alt="" class="icone" width="60">
-          <div class="boxContent">
-            <h4><span class="dot"></span>Importar postes</h4>
-            <p>Inserir postes no projeto.</p>
-          </div>
-        </div>
-      </a>
+      <?php
+      $related_posts = get_field('ferramentas');
+      if ($related_posts):
+        foreach ($related_posts as $post):
+          setup_postdata($post);
 
-      <a href="<?php echo get_site_url(); ?>/ferramentas/alinhar-postes/" class="boxAzul">
-        <div class="boxBody">
-          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-2-cadfiber.svg" alt="" class="icone" width="50">
-          <div class="boxContent">
-            <h4><span class="dot"></span>Alinhar postes</h4>
-            <p>Alinhar os postes na quadra.</p>
-          </div>
-        </div>
-      </a>
+          $icone = get_field('icone');
+          $descricao = get_the_content();
+          $titulo = get_the_title();
+          $url = get_permalink();
+          $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg';
+      ?>
+          <a href="<?php echo esc_url($url); ?>" class="boxAzul">
+            <div class="boxBody">
+              <img loading="lazy" src="<?php echo $icone; ?>" alt="" class="icone" width="60">
+              <div class="boxContent">
+                <h4><span class="dot"></span><?php echo esc_html($titulo); ?></h4>
+                <p><?php echo esc_html($descricao); ?></p>
+              </div>
+            </div>
+          </a>
+      <?php
+        endforeach;
+        wp_reset_postdata();
+      endif;
+      ?>
 
-      <a href="<?php echo get_site_url(); ?>/ferramentas/dados-tf/ " class="boxAzul">
-        <div class="boxBody">
-          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-5-cadfiber.svg" alt="" class="icone" width="35">
-          <div class="boxContent">
-            <h4><span class="dot"></span>Dados - TF</h4>
-            <p>Metragem do cabo.</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="<?php echo get_site_url(); ?>/ferramentas/quantitativo/ " class="boxAzul">
-        <div class="boxBody">
-          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-3-cadfiber.svg" alt="" class="icone" width="50">
-          <div class="boxContent">
-            <h4><span class="dot"></span>Quantitativo</h4>
-            <p>Quantitativo de materiais.</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="<?php echo get_site_url(); ?>/ferramentas/mub/" class="boxAzul">
-        <div class="boxBody">
-          <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icone-6-cadfiber.svg" alt="" class="icone" width="50">
-          <div class="boxContent">
-            <h4><span class="dot"></span>Mub</h4>
-            <p>Ferramenta para desenhar ruas.</p>
-          </div>
-        </div>
-      </a>
     </div>
 
     <div class="row justify-content-center mb-4">
@@ -308,94 +277,64 @@ get_header();
 
     <div class="row boxPricesList">
 
-      <div class="col-lg-4 boxCard mb-3">
-        <div class="card">
-          <div class="card-body">
-            <div class="boxType">
-              <span class="text-uppercase">Start</span>
-            </div>
+      <?php
+      $args = array(
+        'post_type' => 'investimentos',
+        'posts_per_page' => -1,
+      );
 
-            <div class="hover">
-              <div class="boxPrice">
-                R$ <span class="price">395</span><span class="mounth">Mês</span>
+      $query = new WP_Query($args);
+
+      if ($query->have_posts()):
+        while ($query->have_posts()): $query->the_post();
+
+          $titulo = get_the_title();
+          $descricao = get_the_content();
+          $detalhes = get_post_meta(get_the_ID(), 'detalhes', true);
+          $preco = get_post_meta(get_the_ID(), 'preco', true);
+          $url = get_field('url');
+          $detalhes_array = $detalhes ? explode(',', $detalhes) : [];
+      ?>
+          <div class="col-lg-4 boxCard mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="boxType">
+                  <span class="text-uppercase"><?php echo esc_html($titulo); ?></span>
+                </div>
+
+                <div class="hover">
+                  <div class="boxPrice">
+                    R$ <span class="price"><?php echo esc_html($preco); ?></span><span class="mounth">Mês</span>
+                  </div>
+
+                  <div class="boxDescription">
+                    <p class="description"><?php echo esc_html($descricao); ?></p>
+                    <p class="list">
+                      <?php
+                      if (!empty($detalhes_array)) {
+                        foreach ($detalhes_array as $item) {
+                          echo '- ' . esc_html(trim($item)) . '<br>';
+                        }
+                      } else {
+                        echo '- Nenhum detalhe disponível <br>';
+                      }
+                      ?>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="boxButton">
+                  <a href="<?php echo esc_url($url); ?>" class="btn btnButtonBuy">COMPRE AGORA ></a>
+                </div>
               </div>
-
-              <div class="boxDescription">
-                <p class="description">ESSE PLANO FOI PENSADO PARA QUEM DESEJA ELABORAR PROJETOS FTTH.</p>
-                <p class="list">
-                  - Suporte grupo whatsapp <br>
-                  - 1 licença <br>
-                  - Minha jornada
-                </p>
-              </div>
-            </div>
-
-            <div class="boxButton">
-              <a href="#" class="btn btnButtonBuy">COMPRE AGORA ></a>
             </div>
           </div>
-        </div>
-      </div>
+      <?php
+        endwhile;
+        wp_reset_postdata();
+      endif;
+      ?>
 
-      <div class="col-lg-4 boxCard mb-3">
-        <div class="card">
-          <div class="card-body">
-            <div class="boxType">
-              <span class="text-uppercase">Pro</span>
-            </div>
-
-            <div class="hover">
-              <div class="boxPrice">
-                R$ <span class="price">485</span><span class="mounth">Mês</span>
-              </div>
-
-              <div class="boxDescription">
-                <p class="description">ESSE PLANO FOI PENSADO PARA QUEM DESEJA ELABORAR PROJETOS DE COMPARTILHAMENTO DE POSTES.</p>
-                <p class="list">
-                  - Esforço mecânico <br>
-                  - Suporte grupo whatsapp <br>
-                  - 1 licença <br>
-                  - Minha jornada
-                </p>
-              </div>
-            </div>
-
-            <div class="boxButton">
-              <a href="#" class="btn btnButtonBuy">COMPRE AGORA ></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 boxCard mb-3">
-        <div class="card">
-          <div class="card-body">
-            <div class="boxType">
-              <span class="text-uppercase">Enterprise</span>
-            </div>
-
-            <div class="hover">
-              <div class="boxPrice">
-                R$ <span class="price">1.552</span><span class="mounth">Mês</span>
-              </div>
-
-              <div class="boxDescription">
-                <p class="description">PARA EM ESCRITÓRIOS DE ENGENHARIA DE MÉDIO E PEQUENO PORTE.</p>
-                <p class="list">
-                  - Todas as ferramentas da versão PRO <br>
-                  - Suporte Grupo individual <br>
-                  - 4 licenças <br>
-                  - Minha jornada
-                </p>
-              </div>
-            </div>
-
-            <div class="boxButton">
-              <a href="#" class="btn btnButtonBuy">COMPRE AGORA ></a>
-            </div>
-          </div>
-        </div>
-      </div>
 
 
 
