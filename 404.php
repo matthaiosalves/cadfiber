@@ -18,10 +18,10 @@ get_header();
       </div>
     </div>
   </div>
+  <div class="boxImagem">
+    <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/imagem-aperto-de-maos-sem-mascara.webp" alt="" class="imagem">
+  </div>
 </section>
-<div class="boxImagem">
-  <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/imagem-aperto-de-maos-sem-mascara.webp" alt="" class="imagem">
-</div>
 <div class="boxTreco">
   <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/treco-verde-internas.svg" alt="">
 </div>
