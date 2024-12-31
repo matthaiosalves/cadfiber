@@ -132,7 +132,7 @@ Template Name: Abas
       </div>
 
       <!-- Local do Conteúdo -->
-      <div class="boxContent card">
+      <div class="boxContent card" id="boxContent">
         <p>Selecione uma aba para carregar o conteúdo.</p>
       </div>
     </div>
@@ -148,8 +148,6 @@ Template Name: Abas
   const abasList = document.getElementById('abas-list');
 
   let allAbas = [];
-
-  // Função principal para carregar as abas
   async function loadAbas() {
     try {
       const response = await fetch(apiUrl);
@@ -160,11 +158,30 @@ Template Name: Abas
         return;
       }
 
-      // Renderiza as abas principais
+      let activeAbaId = null;
+
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const abaFromHash = allAbas.find(aba => {
+          const anchor = (aba.label_lateral || aba.title).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+          return anchor === hash.toLowerCase();
+        });
+        if (abaFromHash) {
+          activeAbaId = abaFromHash.id;
+          loadContent(abaFromHash.id);
+          setTimeout(() => {
+            document.querySelector('#boxContent').scrollIntoView({
+              behavior: 'smooth'
+            });
+          }, 300);
+        }
+      }
+
       allAbas
-        .filter(aba => !aba.parent_item) // Seleciona somente itens sem pai
+        .filter(aba => !aba.parent_item)
         .forEach((aba, index) => {
-          const li = createTabItem(aba, index === 0);
+          const isActive = aba.id === activeAbaId || (!activeAbaId && index === 0);
+          const li = createTabItem(aba, isActive);
           abasList.appendChild(li);
         });
 
@@ -174,21 +191,19 @@ Template Name: Abas
     }
   }
 
-  // Criação dos itens de aba (principal e subitens)
   function createTabItem(aba, isActive) {
     const li = document.createElement('li');
 
-    // Adiciona a classe 'has-sub' se o item tiver subitens
     if (aba.subitens && aba.subitens.length > 0) {
       li.classList.add('has-sub');
     }
 
     const a = document.createElement('a');
-    a.href = '#';
+    const anchor = (aba.label_lateral || aba.title).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+    a.href = `#${anchor}`;
     a.setAttribute('data-id', aba.id);
     a.textContent = aba.label_lateral || aba.title;
 
-    // Marca a primeira aba como ativa no carregamento inicial
     if (isActive) {
       a.classList.add('active');
       loadContent(aba.id);
@@ -196,11 +211,10 @@ Template Name: Abas
 
     li.appendChild(a);
 
-    // Verifica se há subitens e cria lista aninhada
     if (aba.subitens && aba.subitens.length > 0) {
       const subList = document.createElement('ul');
       aba.subitens.forEach(subitemId => {
-        const subitem = allAbas.find(item => item.id === subitemId); // Busca o subitem pelo ID
+        const subitem = allAbas.find(item => item.id === subitemId);
         if (subitem) {
           const subLi = createTabItem(subitem, false);
           subList.appendChild(subLi);
@@ -212,7 +226,6 @@ Template Name: Abas
     return li;
   }
 
-  // Adiciona eventos de clique para alternar abas
   function addClickEvents() {
     const tabs = document.querySelectorAll('.boxAbas ul li > a');
 
@@ -220,41 +233,40 @@ Template Name: Abas
       tab.addEventListener('click', (e) => {
         e.preventDefault();
 
-        // Remove a classe 'active' de todas as abas
         tabs.forEach(t => t.classList.remove('active'));
-
-        // Adiciona a classe 'active' apenas na aba clicada
         tab.classList.add('active');
 
-        // Alterna o menu se o item tiver subitens
         const parentLi = tab.parentElement;
         if (parentLi.classList.contains('has-sub')) {
           parentLi.classList.toggle('open');
         }
 
-        // Carrega o conteúdo da aba
         const postId = tab.getAttribute('data-id');
         loadContent(postId);
+        history.pushState(null, null, tab.href);
+        setTimeout(() => {
+          document.querySelector('#boxContent').scrollIntoView({
+            behavior: 'smooth'
+          });
+        }, 300);
       });
     });
   }
 
-  // Carrega o conteúdo da aba selecionada
   function loadContent(postId) {
     const aba = allAbas.find(item => item.id == postId);
 
     if (aba) {
       boxContent.innerHTML = `
-        <h2>${aba.title}</h2>
-        <div>${aba.content}</div>
-      `;
+      <h2>${aba.title}</h2>
+      <div>${aba.content}</div>
+    `;
     } else {
       boxContent.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
       console.error('Conteúdo não encontrado para o ID:', postId);
     }
   }
 
-  // Inicia o carregamento das abas
   loadAbas();
 </script>
 
