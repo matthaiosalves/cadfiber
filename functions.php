@@ -162,3 +162,4 @@ require_once get_template_directory() . '/inc/youtube.php';
 require_once get_template_directory() . '/inc/materiaisCPT.php';
 require_once get_template_directory() . '/inc/fnBanner.php';
 require_once get_template_directory() . '/inc/fnCampoDescricao.php';
+require_once get_template_directory() . '/inc/fnSociais.php';

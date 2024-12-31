@@ -43,6 +43,17 @@
     </div>
   </div>
 </section>
+<section>
+  <div class="row">
+    <div class="container-fluid">
+      <?php
+      while (have_posts()) : the_post();
+        the_content();
+      endwhile;
+      ?>
+    </div>
+  </div>
+</section>
 <?php include get_template_directory() . '/templates/cta.php'; ?>
 <?php include get_template_directory() . '/templates/contato.php'; ?>
 <?php get_footer(); ?>

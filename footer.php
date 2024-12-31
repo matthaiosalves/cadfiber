@@ -64,11 +64,31 @@
 								<p> <i class="fa-solid fa-envelope"></i> suporte@cadfiber.com</p>
 							</div>
 							<div class="boxRedes">
-								<a href="https://www.linkedin.com/company/cadfiber-plugin/"><i class="fa-brands fa-linkedin-in"></i></a>
-								<a href="https://www.facebook.com/cadfiber/?locale=pt_BR"><i class="fa-brands fa-facebook"></i></a>
-								<a href="https://www.youtube.com/channel/UCkp77ENGI8DoloZsWMOZ6bQ"><i class="fa-brands fa-youtube"></i></a>
-								<a href="https://www.instagram.com/cadfiber"><i class="fa-brands fa-instagram"></i></a>
+								<?php if (get_option('linkedin_url')) : ?>
+									<a href="<?php echo esc_url(get_option('linkedin_url')); ?>" target="_blank">
+										<i class="fa-brands fa-linkedin-in"></i>
+									</a>
+								<?php endif; ?>
+
+								<?php if (get_option('facebook_url')) : ?>
+									<a href="<?php echo esc_url(get_option('facebook_url')); ?>" target="_blank">
+										<i class="fa-brands fa-facebook"></i>
+									</a>
+								<?php endif; ?>
+
+								<?php if (get_option('youtube_url')) : ?>
+									<a href="<?php echo esc_url(get_option('youtube_url')); ?>" target="_blank">
+										<i class="fa-brands fa-youtube"></i>
+									</a>
+								<?php endif; ?>
+
+								<?php if (get_option('instagram_url')) : ?>
+									<a href="<?php echo esc_url(get_option('instagram_url')); ?>" target="_blank">
+										<i class="fa-brands fa-instagram"></i>
+									</a>
+								<?php endif; ?>
 							</div>
+
 						</div>
 					</div>
 				</div>
