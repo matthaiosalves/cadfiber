@@ -2,16 +2,16 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-// Caminho das pastas de entrada e saída
-const inputFolder = path.join(__dirname, 'src', 'img');
-const outputFolder = path.join(__dirname, 'dist', 'img');
+// Caminho correto para a pasta img dentro do tema
+const inputFolder = path.join(__dirname, 'wp-content', 'themes', 'cadfiber-bundle', 'img');
+const outputFolder = path.join(__dirname, 'wp-content', 'themes', 'cadfiber-bundle', 'img');
 
 // Certifica-se de que a pasta de saída existe
 if (!fs.existsSync(outputFolder)) {
     fs.mkdirSync(outputFolder, { recursive: true });
 }
 
-// Tamanhos que queremos gerar
+// Tamanhos desejados
 const sizes = [600, 1200];
 
 // Função para redimensionar a imagem
@@ -23,13 +23,13 @@ async function resizeImage(file) {
     for (const size of sizes) {
         const outputPath = path.join(outputFolder, `${baseName}-${size}${ext}`);
 
-        // Verifica se a imagem já existe
+        // Verifica se a imagem já existe para evitar redundância
         if (fs.existsSync(outputPath)) {
             console.log(`Imagem já existe: ${outputPath}, pulando...`);
             continue;
         }
 
-        // Gera a imagem apenas se não existir
+        // Redimensiona a imagem
         await sharp(inputPath)
             .resize(size)
             .toFile(outputPath)
@@ -42,7 +42,7 @@ async function resizeImage(file) {
     }
 }
 
-// Processa todas as imagens da pasta
+// Processa todas as imagens na pasta
 fs.readdirSync(inputFolder).forEach(file => {
     if (/\.(jpg|jpeg|png|webp)$/i.test(file)) {
         resizeImage(file);

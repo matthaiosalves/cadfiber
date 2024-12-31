@@ -37,10 +37,10 @@ get_header();
       <div class="col-sm-12 col-md-12 col-lg-6 boxImagemBanner">
         <img
           loading="lazy"
-          src="<?php echo get_template_directory_uri(); ?>/dist/img/notebook-cadfiber-1200.webp"
+          src="<?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber-1200.webp"
           srcset="
-        <?php echo get_template_directory_uri(); ?>/dist/img/notebook-cadfiber-600.webp 600w,
-        <?php echo get_template_directory_uri(); ?>/dist/img/notebook-cadfiber-1200.webp 1200w
+        <?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber-600.webp 600w,
+        <?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber-1200.webp 1200w
       "
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
           alt="Notebook Cadfiber"
