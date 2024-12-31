@@ -38,6 +38,11 @@ h6,
 p {
   font-family: "Poppins", serif;
 }
+p {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 130px;
