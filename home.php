@@ -35,8 +35,9 @@ get_header();
       </div>
 
       <div class="col-sm-12 col-md-12 col-lg-6 boxImagemBanner">
-        <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/notebook-cadfiber.webp" alt="" class="imgNote">
+        <?php echo wp_get_attachment_image(get_attachment_id_by_url(get_template_directory_uri() . '/img/notebook-cadfiber.webp'), 'medium_large', false, ['class' => 'imgNote', 'loading' => 'lazy']); ?>
       </div>
+
 
     </div>
   </div>
