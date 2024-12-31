@@ -1171,6 +1171,64 @@ body {
 .abas .row {
   justify-content: space-between;
 }
+.boxContent .content {
+  display: none;
+}
+
+.boxContent .content.active {
+  display: block;
+}
+
+.boxAbas ul ul {
+  margin-left: 20px;
+  display: none;
+}
+
+.boxAbas ul li > a {
+  position: relative;
+  padding-right: 20px;
+}
+
+.boxAbas ul li.has-sub > a::after {
+  content: "▼";
+  position: absolute;
+  right: 5px;
+  font-size: 12px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+.boxAbas ul li.open > a::after {
+  transform: rotate(180deg);
+}
+
+.boxAbas ul li a.active {
+  font-weight: bold;
+}
+.boxAbas ul ul {
+  display: none;
+  margin-left: 20px;
+}
+.boxAbas ul li.open > ul {
+  display: block;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+.boxAbas ul li.has-sub > a {
+  position: relative;
+  padding-right: 20px;
+}
+
+.boxAbas ul li.has-sub > a::after {
+  content: "▼";
+  position: absolute;
+  right: 5px;
+  font-size: 12px;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+.boxAbas ul li.open > a::after {
+  transform: rotate(180deg);
+}
 /* Footer */
 .footer {
   min-height: 427px;
