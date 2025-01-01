@@ -101,7 +101,7 @@
 	</div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.purged.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.purged.min.js"></script>
 <?php if (is_front_page()) : ?>
 	<script>
 		"use strict";
