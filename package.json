@@ -19,8 +19,13 @@
     "merge:css": "node mergeCSS.js",
     "lazy:img": "node lazyImages.js",
     "purge": "purgecss --config purgecss.config.js",
+    "purge:bootstrap": "node purge-bootstrap.js",
     "bundle": "dir-archiver --src . --dest ../cadfiber-bundle.zip --exclude .git node_modules .vscode .DS_Store",
     "optimize:img": "npm run convert:webp && npm run lazy:img",
-    "build": "npm run version && npm run merge:css && npm run optimize:img && npm run purge && npm run bundle"
+    "build": "npm run version && npm run merge:css && npm run optimize:img && npm run purge:bootstrap && npm run purge && npm run bundle"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "uglify-js": "^3.19.3"
   }
 }
