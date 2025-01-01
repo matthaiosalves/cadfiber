@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Matheus Alves
 Author URI: https://www.linkedin.com/in/matheusalveso/
 Description: Description
-Version: 1.0.41
+Version: 1.0.43
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -1466,9 +1466,13 @@ body {
   }
 }
 @media (max-width: 600px) {
+  .bannerPrincipal .imgNote {
+    display: none;
+  }
   .bannerPrincipal {
     background-image: none;
     background-color: #05122c;
+    min-height: auto;
   }
   .titleFaq {
     width: 100%;
