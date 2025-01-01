@@ -153,6 +153,28 @@ add_filter('show_admin_bar', '__return_false');
 
 add_theme_support('post-thumbnails', ['post', 'page']);
 
+function load_nprogress()
+{
+	// CSS do NProgress
+	wp_enqueue_style('nprogress-css', get_template_directory_uri() . '/css/nprogress.min.css');
+
+	// JS do NProgress
+	wp_enqueue_script('nprogress-js', get_template_directory_uri() . '/js/nprogress.min.js', [], false, true);
+
+	// Script para iniciar NProgress
+	wp_add_inline_script('nprogress-js', "
+      document.addEventListener('DOMContentLoaded', function() {
+        NProgress.start();
+      });
+      window.addEventListener('load', function() {
+        NProgress.done();
+      });
+    ");
+}
+add_action('wp_enqueue_scripts', 'load_nprogress');
+
+
+
 require_once get_template_directory() . '/inc/faqCPT.php';
 require_once get_template_directory() . '/inc/ferramentasCPT.php';
 require_once get_template_directory() . '/inc/investimentosCPT.php';
