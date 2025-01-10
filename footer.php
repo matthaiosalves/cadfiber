@@ -100,8 +100,8 @@
 		<p>CNPJ: 40.875.623/0001-22 © 20<?php echo date('y'); ?> cadfiber.com – Todos os Direitos Reservados</p>
 	</div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.purged.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.purged.min.js" defer></script>
 <?php if (is_front_page()) : ?>
 	<script>
 		"use strict";
