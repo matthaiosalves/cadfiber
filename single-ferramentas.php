@@ -22,7 +22,6 @@
     <div class="row">
       <div class="boxTitles">
         <h3><?php the_title(); ?></h3>
-        <!-- <p></p> -->
       </div>
 
       <div class="boxDescription">

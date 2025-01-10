@@ -6,7 +6,7 @@
   <div class="tarja">
     <div class="container-fluid">
       <div class="row boxDescription">
-        <span>São mais de 32 ferramentas disponíveis para o AutoCAD</span>
+        <span><?php echo the_title() ?: 'Nova Página'; ?></span>
       </div>
     </div>
   </div>

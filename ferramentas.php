@@ -59,6 +59,7 @@ if (!empty($categorias) && !is_wp_error($categorias)) :
       <div class="container-fluid">
         <div class="row">
           <h3><?php echo esc_html($categoria->name); ?></h3>
+          <p style="color:#707070;"><?php echo esc_html($categoria->description); ?></p>
         </div>
 
         <div class="row listBoxesAzul">
