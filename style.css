@@ -528,9 +528,12 @@ body {
 .velocidade .boxAzul p {
   color: #ffff;
   margin-bottom: 0;
+  word-break: break-word;
+  word-wrap: break-word;
 }
 .velocidade .boxAzul .icone {
-  max-width: 100%;
+  max-width: 40px;
+  width: 40px;
 }
 .velocidade h3 {
   font-size: 65px;
