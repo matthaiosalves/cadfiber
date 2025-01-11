@@ -210,22 +210,20 @@ get_header();
         $youtube_url = get_post_meta(get_the_ID(), '_youtube_iframe_' . $template_atual, true);
         $youtube_id = get_youtube_id($youtube_url);
         if ($youtube_id) :
+          $thumbnail_url = "https://img.youtube.com/vi/{$youtube_id}/hqdefault.jpg";
         ?>
-          <iframe
-            style="border-radius:20px; max-width:100%;"
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/<?php echo esc_attr($youtube_id); ?>"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
+          <lite-youtube
+            videoid="<?php echo esc_attr($youtube_id); ?>"
+            style="position: relative; display: block; width: 100%; padding-bottom: 56.25%; border-radius: 20px; background: url('<?php echo esc_url($thumbnail_url); ?>') center center / cover no-repeat; cursor: pointer;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: white; text-shadow: 0 0 10px black;">
+              ▶
+            </div>
+          </lite-youtube>
         <?php else : ?>
           <p class="text-white">Por favor, insira um link válido do YouTube.</p>
         <?php endif; ?>
       </div>
+
     </div>
 
     <div class="row">

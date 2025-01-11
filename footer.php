@@ -102,6 +102,8 @@
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.purged.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@1.4.0/dist/lite-yt-embed.js" defer></script>
+
 <?php if (is_front_page()) : ?>
 	<script>
 		"use strict";
@@ -135,19 +137,19 @@
 					} else {
 						navbar.classList.remove("bg-light");
 						navbar.classList.add("bg-blue");
-						navbarBrand.style.backgroundColor = "#ffffff";
+						navbarBrand.style.backgroundColor = "transparent";
 						navLinks.forEach(link => {
 							link.style.color = "";
 						});
 						if (boxButtonLogin) {
 							boxButtonLogin.style.color = "";
 						}
-						logo.src = `${getTemplateDirectoryUri()}/img/logo-reduzido.svg`;
+						logo.src = `${getTemplateDirectoryUri()}/img/logo-novo.svg`;
 					}
 				} else {
 					navbar.classList.remove("bg-blue");
 					navbar.classList.add("bg-light");
-					navbarBrand.style.backgroundColor = "#ffffff";
+					navbarBrand.style.backgroundColor = "transparent";
 					logo.src = `${getTemplateDirectoryUri()}/img/logo-completo.svg`;
 					navLinks.forEach(link => {
 						link.style.color = "#3c5aa3";

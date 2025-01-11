@@ -19,10 +19,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="template-directory-uri" content="<?php echo get_template_directory_uri(); ?>">
 	<title>Cadfiber - <?php echo get_the_title() ?: 'Inicial'; ?></title>
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Cadfiber">
 	<meta name="keywords" content="Cadfiber">
@@ -36,6 +32,18 @@
 	<meta property="og:image:height" content="800">
 	<meta property="og:image" content="<?php echo get_site_url(); ?>/wp-content/themes/">
 
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	</noscript>
+	<link rel="preload" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@1.4.0/dist/lite-yt-embed.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lite-youtube-embed@1.4.0/dist/lite-yt-embed.css">
+	</noscript>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 	<?php wp_head(); ?>
 </head>
@@ -50,7 +58,7 @@
 			}
 
 			.navbar .navbar-brand {
-				background-color: #fff;
+				background-color: transparent;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -80,8 +88,8 @@
 		<nav class="navbar navbar-expand-lg fixed-top <?php echo is_front_page() ? 'bg-blue' : 'bg-light'; ?>">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="<?php echo get_site_url(); ?>">
-					<img loading="lazy" class="logoDesktop" src="<?php echo get_template_directory_uri(); ?>/img/<?php echo is_front_page() ? 'logo-reduzido.svg' : 'logo-completo.svg'; ?>" alt="">
-					<img loading="lazy" class="logoMobile" src="<?php echo get_template_directory_uri(); ?>/img/logo-reduzido.svg" alt="">
+					<img loading="lazy" class="logoDesktop" src="<?php echo get_template_directory_uri(); ?>/img/<?php echo is_front_page() ? 'logo-novo.svg' : 'logo-completo.svg'; ?>" alt="">
+					<img loading="lazy" class="logoMobile" src="<?php echo get_template_directory_uri(); ?>/img/logo-completo.svg" alt="">
 				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -126,15 +134,15 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#contato">Contato</a>
 						</li>
-						<li class="nav-item buttonMobile">
+						<!-- <li class="nav-item buttonMobile">
 							<a class="nav-link" href="<?php echo get_site_url(); ?>/wp-login.php/">Login</a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 
-				<div class="boxButtonLogin">
+				<!-- <div class="boxButtonLogin">
 					<a href="<?php echo get_site_url(); ?>/wp-login.php">Login</a>
-				</div>
+				</div> -->
 			</div>
 		</nav>
 	</header>

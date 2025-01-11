@@ -77,9 +77,16 @@ if (!empty($categorias) && !is_wp_error($categorias)) :
           ));
 
           if ($ferramentas_query->have_posts()) :
-            while ($ferramentas_query->have_posts()) : $ferramentas_query->the_post(); ?>
+            while ($ferramentas_query->have_posts()) : $ferramentas_query->the_post();
+              $icone = get_field('icone');
+              $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg';
+          ?>
               <a href="<?php the_permalink(); ?>" class="boxAzulFerramentas">
-                <p><?php the_title(); ?></p>
+                <img loading="lazy" src="<?php echo $icone; ?>" alt="" class="icone" width="60">
+                <div class="boxContent">
+                  <p><?php the_title(); ?></p>
+                  <small>description</small>
+                </div>
               </a>
           <?php
             endwhile;
