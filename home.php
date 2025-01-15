@@ -212,13 +212,13 @@ get_header();
         if ($youtube_id) :
           $thumbnail_url = "https://img.youtube.com/vi/{$youtube_id}/hqdefault.jpg";
         ?>
-          <lite-youtube
-            videoid="<?php echo esc_attr($youtube_id); ?>"
-            style="position: relative; display: block; width: 100%; padding-bottom: 56.25%; border-radius: 20px; background: url('<?php echo esc_url($thumbnail_url); ?>') center center / cover no-repeat; cursor: pointer;">
+          <div class="youtube-container"
+            style="position: relative; display: block; width: 100%; padding-bottom: 56.25%; border-radius: 20px; background: url('<?php echo esc_url($thumbnail_url); ?>') center center / cover no-repeat; cursor: pointer;"
+            data-youtube-id="<?php echo esc_attr($youtube_id); ?>">
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: white; text-shadow: 0 0 10px black;">
               ▶
             </div>
-          </lite-youtube>
+          </div>
         <?php else : ?>
           <p class="text-white">Por favor, insira um link válido do YouTube.</p>
         <?php endif; ?>

@@ -102,7 +102,6 @@
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.purged.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lite-youtube-embed@1.4.0/dist/lite-yt-embed.js" defer></script>
 
 <?php if (is_front_page()) : ?>
 	<script>
@@ -168,6 +167,28 @@
 			function getTemplateDirectoryUri() {
 				return document.querySelector("meta[name='template-directory-uri']").content;
 			}
+		});
+
+		document.addEventListener('DOMContentLoaded', function() {
+			const youtubeContainers = document.querySelectorAll('.youtube-container');
+			youtubeContainers.forEach(container => {
+				container.addEventListener('click', function() {
+					const youtubeId = container.getAttribute('data-youtube-id');
+					const iframe = document.createElement('iframe');
+					iframe.setAttribute('src', `https://www.youtube.com/embed/${youtubeId}?autoplay=1&modestbranding=1&rel=0`);
+					iframe.setAttribute('frameborder', '0');
+					iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+					iframe.setAttribute('allowfullscreen', true);
+					iframe.style.position = 'absolute';
+					iframe.style.top = '0';
+					iframe.style.left = '0';
+					iframe.style.width = '100%';
+					iframe.style.height = '100%';
+					container.innerHTML = '';
+					container.style.background = 'none';
+					container.appendChild(iframe);
+				});
+			});
 		});
 	</script>
 <?php endif; ?>
