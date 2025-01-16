@@ -58,8 +58,10 @@ if (!empty($categorias) && !is_wp_error($categorias)) :
     <section class="section-ferramentas">
       <div class="container-fluid">
         <div class="row">
-          <h3><?php echo esc_html($categoria->name); ?></h3>
-          <p class="descriptionFerramenta"><?php echo esc_html($categoria->description); ?></p>
+          <div class="boxTitles">
+            <h3><?php echo esc_html($categoria->name); ?></h3>
+            <p class="descriptionFerramenta"><?php echo esc_html($categoria->description); ?></p>
+          </div>
         </div>
 
         <div class="row listBoxesAzul">

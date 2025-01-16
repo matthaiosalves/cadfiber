@@ -177,7 +177,19 @@ body {
 .contentSingle {
   padding-bottom: 50px;
 }
-.section-ferramentas h3,
+.section-ferramentas .boxTitles {
+  width: 536px;
+  border-bottom: 5px solid #14dfa0;
+}
+.section-ferramentas h3 {
+  color: #061534;
+  width: 536px;
+  padding-bottom: 15px;
+  padding-top: 50px;
+  font-size: 42px;
+  font-weight: 700;
+  padding-left: 0;
+}
 .contentSingle h3 {
   color: #061534;
   border-bottom: 5px solid #14dfa0;
