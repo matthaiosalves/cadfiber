@@ -72,6 +72,8 @@ Template Name: Abas
   const abasList = document.getElementById('abas-list');
 
   let allAbas = [];
+  const contentCache = new Map();
+
   async function loadAbas() {
     try {
       const response = await fetch(apiUrl);
@@ -87,7 +89,11 @@ Template Name: Abas
       const hash = window.location.hash.substring(1);
       if (hash) {
         const abaFromHash = allAbas.find(aba => {
-          const anchor = (aba.label_lateral || aba.title).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+          const anchor = (aba.label_lateral || aba.title)
+            .normalize('NFD')
+            .replace(/[̀-ͯ]/g, '')
+            .replace(/[^a-z0-9]+/gi, '-')
+            .toLowerCase();
           return anchor === hash.toLowerCase();
         });
         if (abaFromHash) {
@@ -123,7 +129,11 @@ Template Name: Abas
     }
 
     const a = document.createElement('a');
-    const anchor = (aba.label_lateral || aba.title).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+    const anchor = (aba.label_lateral || aba.title)
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/gi, '-')
+      .toLowerCase();
     a.href = `#${anchor}`;
     a.setAttribute('data-id', aba.id);
     a.textContent = aba.label_lateral || aba.title;
@@ -178,21 +188,34 @@ Template Name: Abas
   }
 
   function loadContent(postId) {
+    if (contentCache.has(postId)) {
+      const cachedContent = contentCache.get(postId);
+      renderContent(cachedContent);
+      console.log('Conteúdo carregado do cache:', postId);
+      return;
+    }
+
     const aba = allAbas.find(item => item.id == postId);
 
     if (aba) {
-      boxContent.innerHTML = `
-      <h2>${aba.title}</h2>
-      <div>${aba.content}</div>
-    `;
+      contentCache.set(postId, aba);
+      renderContent(aba);
     } else {
       boxContent.innerHTML = '<p>Erro ao carregar o conteúdo.</p>';
       console.error('Conteúdo não encontrado para o ID:', postId);
     }
   }
 
+  function renderContent(aba) {
+    boxContent.innerHTML = `
+      <h2>${aba.title}</h2>
+      <div>${aba.content}</div>
+    `;
+  }
+
   loadAbas();
 </script>
+
 
 
 <?php get_footer(); ?>

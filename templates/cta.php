@@ -1,6 +1,10 @@
+<?php
+$habilitar = get_field('habilitar');
+$style = $habilitar ? '' : 'style="display: none;"';
+?>
 <section class="barrerAzul">
   <?php if (is_front_page()): ?>
-    <section class="formulario" style="display: none;">
+    <section class="formulario" <?php echo $style; ?>>
       <div class="container-fluid">
         <div class="row">
 
