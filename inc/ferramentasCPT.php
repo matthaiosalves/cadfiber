@@ -18,7 +18,7 @@ function criar_post_type_ferramentas()
     'public' => true,
     'has_archive' => true,
     'menu_icon' => 'dashicons-hammer',
-    'rewrite' => array('slug' => 'ferramentas'),
+    'rewrite' => array('slug' => 'ferramenta'),
     'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
   ));
 }

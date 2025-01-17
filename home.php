@@ -127,17 +127,17 @@ get_header();
           setup_postdata($post);
 
           $icone = get_field('icone');
-          $descricao = get_the_content();
           $titulo = get_the_title();
           $url = get_permalink();
           $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg';
+          $descricaoResumidaHome = get_field('descricao_resumida_home');
       ?>
           <a href="<?php echo esc_url($url); ?>" class="boxAzul">
             <div class="boxBody">
               <img loading="lazy" src="<?php echo $icone; ?>" alt="" class="icone" width="60">
               <div class="boxContent">
                 <h4><span class="dot"></span><?php echo esc_html($titulo); ?></h4>
-                <p><?php echo esc_html($descricao); ?></p>
+                <p><?php echo $descricaoResumidaHome ?: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.'; ?></p>
               </div>
             </div>
           </a>
