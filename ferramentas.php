@@ -82,12 +82,17 @@ if (!empty($categorias) && !is_wp_error($categorias)) :
             while ($ferramentas_query->have_posts()) : $ferramentas_query->the_post();
               $icone = get_field('icone');
               $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg';
+              $descricaoResumida = get_field('descricao_resumida');
           ?>
               <a href="<?php the_permalink(); ?>" class="boxAzulFerramentas">
-                <img loading="lazy" src="<?php echo $icone; ?>" alt="" class="icone" width="60">
-                <div class="boxContent">
-                  <p><?php the_title(); ?></p>
-                  <small>description</small>
+                <div class="card-body">
+                  <div class="boxContent">
+                    <img loading="lazy" src="<?php echo $icone; ?>" alt="" class="icone" width="60">
+                    <p><?php the_title(); ?></p>
+                  </div>
+                  <div class="boxDescriptionCustom">
+                    <p class="descriptionCustomNew"><?php echo $descricaoResumida ?: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.'; ?></p>
+                  </div>
                 </div>
               </a>
           <?php
