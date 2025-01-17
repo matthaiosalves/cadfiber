@@ -49,7 +49,7 @@
     </div>
 
     <div class="row justify-content-center mb-4">
-      <a href="<?php echo get_site_url(); ?>/ferramenta/" class="btn btnVerTodos">Ver todos ></a>
+      <a href="<?php echo get_site_url(); ?>/ferramentas/" class="btn btnVerTodos">Ver todos ></a>
     </div>
     <hr class="mt-5 mb-4" />
   </div>

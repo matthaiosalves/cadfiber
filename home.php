@@ -121,36 +121,44 @@ get_header();
     <div class="row mb-4">
 
       <?php
-      $related_posts = get_field('ferramentas');
-      if ($related_posts):
-        foreach ($related_posts as $post):
-          setup_postdata($post);
+      $related_posts = get_field('ferramentas'); // Retorna IDs dos posts relacionados
+      if ($related_posts && is_array($related_posts)): // Verifica se há posts relacionados
+        foreach ($related_posts as $post_id): // Itera pelos IDs
+          // Busca os campos personalizados
+          $icone = get_field('icone', $post_id); // Campo 'icone'
+          $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg'; // Fallback para ícone padrão
 
-          $icone = get_field('icone');
-          $titulo = get_the_title();
-          $url = get_permalink();
-          $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg';
-          $descricaoResumidaHome = get_field('descricao_resumida_home');
+          $titulo = get_the_title($post_id); // Título do post
+          $url = get_permalink($post_id); // Permalink do post
+
+          $descricaoResumidaHome = get_field('descricao_resumida_home', $post_id); // Campo 'descricao_resumida_home'
+          $descricaoResumida = get_field('descricao_resumida', $post_id); // Campo 'descricao_resumida'
+
+          // Usa a descrição mais adequada ou um texto padrão
+          $descricao = $descricaoResumidaHome ?: $descricaoResumida ?: 'Nenhuma descrição disponível.';
       ?>
           <a href="<?php echo esc_url($url); ?>" class="boxAzul">
             <div class="boxBody">
-              <img loading="lazy" src="<?php echo $icone; ?>" alt="" class="icone" width="60">
+              <img loading="lazy" src="<?php echo $icone; ?>" alt="Ícone de <?php echo esc_attr($titulo); ?>" class="icone" width="60">
               <div class="boxContent">
                 <h4><span class="dot"></span><?php echo esc_html($titulo); ?></h4>
-                <p><?php echo $descricaoResumidaHome ?: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed.'; ?></p>
+                <p><?php echo esc_html($descricao); ?></p>
               </div>
             </div>
           </a>
       <?php
         endforeach;
-        wp_reset_postdata();
+      else:
+        echo '<p>Nenhum post relacionado encontrado.</p>';
       endif;
       ?>
 
     </div>
 
+
+
     <div class="row justify-content-center mb-4">
-      <a href="<?php echo get_site_url(); ?>/ferramenta/" class="btn btnVerTodos">Ver todos ></a>
+      <a href="<?php echo get_site_url(); ?>/ferramentas/" class="btn btnVerTodos">Ver todos ></a>
     </div>
 
     <hr class="mt-5 mb-4" />
