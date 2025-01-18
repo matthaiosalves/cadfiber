@@ -121,21 +121,17 @@ get_header();
     <div class="row mb-4">
 
       <?php
-      $related_posts = get_field('ferramentas'); // Retorna IDs dos posts relacionados
-      if ($related_posts && is_array($related_posts)): // Verifica se há posts relacionados
-        foreach ($related_posts as $post_id): // Itera pelos IDs
-          // Busca os campos personalizados
-          $icone = get_field('icone', $post_id); // Campo 'icone'
-          $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg'; // Fallback para ícone padrão
+      $related_posts = get_field('ferramentas_home');
+      if ($related_posts && is_array($related_posts)):
+        foreach ($related_posts as $post_id):
+          $icone = $post_id['icone'];
+          $icone = $icone ? esc_url($icone) : get_template_directory_uri() . '/img/icone-5-cadfiber.svg';
 
-          $titulo = get_the_title($post_id); // Título do post
-          $url = get_permalink($post_id); // Permalink do post
+          $titulo = $post_id['titulo'];
+          $url = $post_id['url'];
 
-          $descricaoResumidaHome = get_field('descricao_resumida_home', $post_id); // Campo 'descricao_resumida_home'
-          $descricaoResumida = get_field('descricao_resumida', $post_id); // Campo 'descricao_resumida'
-
-          // Usa a descrição mais adequada ou um texto padrão
-          $descricao = $descricaoResumidaHome ?: $descricaoResumida ?: 'Nenhuma descrição disponível.';
+          $descricaoResumidaHome = get_field('descricao');
+          $descricao = $descricaoResumidaHome ?: 'Nenhuma descrição disponível.';
       ?>
           <a href="<?php echo esc_url($url); ?>" class="boxAzul">
             <div class="boxBody">
