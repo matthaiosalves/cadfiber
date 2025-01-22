@@ -130,7 +130,7 @@ get_header();
           $titulo = $post_id['titulo'];
           $url = $post_id['url'];
 
-          $descricaoResumidaHome = get_field('descricao');
+          $descricaoResumidaHome = $post_id['descricao'];
           $descricao = $descricaoResumidaHome ?: 'Nenhuma descrição disponível.';
       ?>
           <a href="<?php echo esc_url($url); ?>" class="boxAzul">
