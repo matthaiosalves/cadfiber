@@ -23,10 +23,12 @@ function cadfiber_scripts()
 			null
 		);
 
-		$timestamp = filemtime(get_stylesheet_directory() . '/critical/home.css');
+		$home_css_path = get_stylesheet_directory() . '/critical/home.css';
+		$timestamp = filemtime($home_css_path);
+		$home_css_uri = get_stylesheet_directory_uri() . '/critical/home.css';
 		wp_enqueue_style(
 			'cadfiber-home-style',
-			get_stylesheet_directory_uri() . '/critical/home.css',
+			$home_css_uri,
 			array(),
 			$timestamp
 		);
@@ -34,11 +36,17 @@ function cadfiber_scripts()
 		wp_dequeue_style('wp-block-library');
 		wp_dequeue_style('wp-block-library-theme');
 		wp_dequeue_style('wc-blocks-style');
+
+		add_action('wp_head', function () use ($home_css_uri, $timestamp) {
+			echo '<link rel="preload" href="' . esc_url($home_css_uri) . '?ver=' . $timestamp . '" as="style" />';
+		});
 	} else {
-		$timestamp = filemtime(get_stylesheet_directory() . '/style.min.css');
+		$main_css_path = get_stylesheet_directory() . '/style.min.css';
+		$timestamp = filemtime($main_css_path);
+		$main_css_uri = get_stylesheet_directory_uri() . '/style.min.css';
 		wp_enqueue_style(
 			'cadfiber-style',
-			get_stylesheet_directory_uri() . '/style.min.css',
+			$main_css_uri,
 			array(),
 			$timestamp
 		);
@@ -46,9 +54,14 @@ function cadfiber_scripts()
 		wp_enqueue_style('wp-block-library');
 		wp_enqueue_style('wp-block-library-theme');
 		wp_enqueue_style('wc-blocks-style');
+
+		add_action('wp_head', function () use ($main_css_uri, $timestamp) {
+			echo '<link rel="preload" href="' . esc_url($main_css_uri) . '?ver=' . $timestamp . '" as="style" />';
+		});
 	}
 }
 add_action('wp_enqueue_scripts', 'cadfiber_scripts', 20);
+
 
 function cadfiber_enqueue_late_styles()
 {
