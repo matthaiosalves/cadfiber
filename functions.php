@@ -238,6 +238,12 @@ function load_nprogress()
 }
 add_action('wp_enqueue_scripts', 'load_nprogress');
 
+add_filter('auto_update_plugin', function ($update, $item) {
+	if (isset($item->slug) && $item->slug === 'advanced-custom-fields-pro') {
+		return false;
+	}
+	return $update;
+}, 10, 2);
 
 
 require_once get_template_directory() . '/inc/faqCPT.php';
